@@ -8,10 +8,10 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>springbootintroweek1.com</groupId>
-	<artifactId>springbootWeek1</artifactId>
+	<groupId>com.avinash.springboot.week1</groupId>
+	<artifactId>springBootweek1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springbootWeek1</name>
+	<name>springBootweek1</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
@@ -28,11 +28,13 @@
 	</scm>
 	<properties>
 		<java.version>22</java.version>
+		<maven.compiler.source>22</maven.compiler.source>
+		<maven.compiler.target>22</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
 		<dependency>

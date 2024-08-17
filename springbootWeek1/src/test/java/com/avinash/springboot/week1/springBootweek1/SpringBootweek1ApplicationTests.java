@@ -1,10 +1,10 @@
-package springbootintroweek1.com.springbootWeek1;
+package com.avinash.springboot.week1.springBootweek1;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringbootWeek1ApplicationTests {
+class SpringBootweek1ApplicationTests {
 
 	@Test
 	void contextLoads() {
