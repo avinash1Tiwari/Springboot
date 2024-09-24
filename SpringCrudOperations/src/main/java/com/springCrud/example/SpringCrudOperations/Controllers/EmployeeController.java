@@ -226,7 +226,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
-public class EmployeeController {
+public class                                                                                                                                                                                                                        EmployeeController {
 
     private final EmployeeService empservice;
 
@@ -288,5 +288,12 @@ public class EmployeeController {
     public Employeedto updateEmpById(Employeedto inputEmp,Long empid)
     {
         return empservice.updateEmpById(inputEmp,empid);
+    }
+
+
+    @DeleteMapping("delete/{empid}")
+    public String deleteById(Long empid)
+    {
+        return empservice.deleteById(empid);
     }
 }

@@ -150,4 +150,16 @@ public class EmployeeService {
 
     }
 
+
+    public String deleteById(Long empid)
+    {
+        boolean isFound = empRepo.existsById(empid);
+        if(!isFound)
+        {
+            return "Employee with given empId is not found";
+        }
+
+        empRepo.deleteById(empid);
+        return "Employee deleted successfully";
+    }
 }
