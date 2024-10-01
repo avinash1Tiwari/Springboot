@@ -15,12 +15,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor  // Corrected annotation
 @NoArgsConstructor
-@Table(name = "Employee")
+@Table(name = "SpringEmployee")
 public class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long empId;
 
     private String name;
     private String email;
@@ -28,4 +28,7 @@ public class EmployeeEntity {
     private boolean isActive;
 
 
+    public void setId(Long empId) {
+        this.empId=empId;
+    }
 }

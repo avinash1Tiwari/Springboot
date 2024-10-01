@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class Employeedto {
 
-    private int empId;
+    private Long empId;
 
     private String name;
     private String email;
@@ -17,7 +17,7 @@ public class Employeedto {
 
     public Employeedto() {
     }
-    public Employeedto(int empId, String name, String email, LocalDate dateOfJoining, boolean isActive)
+    public Employeedto(Long empId, String name, String email, LocalDate dateOfJoining, boolean isActive)
     {
         this.empId = empId;
         this.name = name;
@@ -38,7 +38,7 @@ public class Employeedto {
         this.email = email;
     }
 
-    public void setEmpId(int empId) {
+    public void setEmpId(Long empId) {
         this.empId = empId;
     }
     public void setName(String name)
@@ -46,7 +46,7 @@ public class Employeedto {
         this.name = name;
     }
 
-    public int getEmpId()
+    public Long getEmpId()
     {
         return this.empId;
     }
