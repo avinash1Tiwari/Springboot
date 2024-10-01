@@ -16,9 +16,9 @@ public class DemojpaintroApplication {
 		UserRepository userRepository =  context.getBean(UserRepository.class);    // making bean
 
 		Users user = new Users();
-		user.setId(1);
-		user.setName("hariOm");
-		user.setCity("mirzapur");
+		user.setId(2);
+		user.setName("ram");
+		user.setCity("everywhere");
 
 		Users user1 = userRepository.save(user);
 		System.out.println(user1);
