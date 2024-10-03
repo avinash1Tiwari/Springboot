@@ -67,15 +67,15 @@ import com.springCrud.example.SpringCrudOperations.Entities.EmployeeEntity;
 import com.springCrud.example.SpringCrudOperations.Repositories.EmployeeRepository;
 import com.springCrud.example.SpringCrudOperations.dto.Employeedto;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.util.ReflectionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.lang.reflect.Field;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -163,5 +163,61 @@ public class EmployeeService {
 
         empRepo.deleteById(empid);
         return "Employee deleted successfully";
+    }
+
+
+
+    public boolean isEmployeeExisting(Long empId)
+    {
+        return empRepo.existsById(empId);
+    }
+
+//    public Employeedto updateFieldById(Long empid, Map<String, Object> updates) {
+//
+//        boolean exists = isEmployeeExisting((empid));
+//        if(!exists) return null;
+//
+//        EmployeeEntity employeeEntity = empRepo.findById(empid).get();
+//        updates.forEach((field,value) ->{
+//            Field fieldTobeUpdated = ReflectionUtils.findRequiredField(EmployeeEntity.class,field);
+//            fieldTobeUpdated.setAccessible(true);
+//            ReflectionUtils.setField(fieldTobeUpdated,employeeEntity,value);
+//        });
+//        return modelmapper(empRepo.save(employeeEntity),Employeedto.class);
+//
+//
+//
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public Employeedto updateFieldById(Long empid, Map<String, Object> updates) {
+
+        boolean exists = isEmployeeExisting(empid);
+        if (!exists) return null;
+
+        EmployeeEntity employeeEntity = empRepo.findById(empid).get();
+
+        updates.forEach((field, value) -> {
+            Field fieldToBeUpdated = ReflectionUtils.findRequiredField(EmployeeEntity.class, field);
+            fieldToBeUpdated.setAccessible(true);
+            ReflectionUtils.setField(fieldToBeUpdated, employeeEntity, value);
+        });
+
+        // Save updated entity
+        EmployeeEntity updatedEntity = empRepo.save(employeeEntity);
+
+        // Use ModelMapper to map the entity to DTO
+        return modelmapper.map(updatedEntity, Employeedto.class);
     }
 }

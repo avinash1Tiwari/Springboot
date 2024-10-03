@@ -223,6 +223,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -297,7 +298,14 @@ public class                                                                    
         return empservice.deleteById(empid);
     }
 
+@PatchMapping("/{empid}")
+public Employeedto updateFieldById(@PathVariable Long empid, @RequestBody Map<String,Object> updates)
+{
+    Employeedto updatedEmployee =  empservice.updateFieldById(empid,updates);
+    System.out.println("employee updation done successfully");
 
+    return updatedEmployee;
+}
 
 
 }
